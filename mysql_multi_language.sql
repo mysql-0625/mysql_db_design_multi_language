@@ -22,7 +22,21 @@ INSERT INTO categories (id, position)
             
 SELECT * FROM categories ORDER BY position;
 
+-- Create table categories_translation untuk simpan translasi tiap language
+CREATE TABLE categories_translation(
+	category_id VARCHAR(100) NOT NULL,
+    language VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    PRIMARY KEY (category_id, language)
+);
 
+DESC categories_translation;
+
+-- relasi kedua table
+ALTER TABLE categories_translation
+	ADD CONSTRAINT fk_categories_translation
+		FOREIGN KEY (category_id) REFERENCES categories(id);
 
 
 
